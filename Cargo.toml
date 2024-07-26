@@ -1,0 +1,18 @@
+[package]
+name = "hydration-test"
+version = "0.1.0"
+authors = ["Lukas Turcani <lukasturcani93@gmail.com>"]
+edition = "2021"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+
+dioxus = { version = "0.5", features = ["web"] }
+dioxus-ssr = { version = "0.5", optional = true }
+
+# Debug
+dioxus-logger = "0.5.1"
+
+[features]
+prebuild = ["dep:dioxus-ssr", "dioxus/ssr"]

@@ -18,7 +18,11 @@ fn main() {
         renderer.pre_render = true;
         let mut vdom = VirtualDom::new(App);
         vdom.rebuild_in_place();
-        index_html.replace("<-- REPLACE -->", dioxus::ssr::pre_render(vdom));
+        std::fs::write(
+            "dist/index.html",
+            index_html.replace("<!-- REPLACE -->", &dioxus::ssr::pre_render(&vdom)),
+        )
+        .unwrap();
     }
 }
 
